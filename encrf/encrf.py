@@ -10,25 +10,28 @@ def generate_key():
     # key generation
     key = Fernet.generate_key()
 
+    filekey_name = f'filekey.{tstamp}.key'
     # string the key in a file
-    with open(f'filekey.{tstamp}.key', 'wb') as filekey:
+    with open(filekey_name, 'wb') as filekey:
         filekey.write(key)
 
+    return filekey_name
 
-def encryptf(newkey: bool):
+
+def encryptf(filename: str, newkey: bool):
 
     if newkey:
-        generate_key()
+        filekey_name = generate_key()
 
     # opening the key
-    with open('filekey.key', 'rb') as filekey:
+    with open(filekey_name, 'rb') as filekey:
         key = filekey.read()
 
     # using the generated key
     fernet = Fernet(key)
 
     # opening the original file to encrypt
-    with open('nba.csv', 'rb') as file:
+    with open(filename, 'rb') as file:
         original = file.read()
 
     # encrypting the file
@@ -36,11 +39,11 @@ def encryptf(newkey: bool):
 
     # opening the file in write mode and
     # writing the encrypted data
-    with open('nba.csv', 'wb') as encrypted_file:
+    with open(filename, 'wb') as encrypted_file:
         encrypted_file.write(encrypted)
 
 
-def decryptf(key: str):
+def decryptf(filename: str, key: str):
     '''
     with open('filekey.key', 'rb') as keyf:
         key = keyf.readline()
@@ -51,7 +54,7 @@ def decryptf(key: str):
     fernet = Fernet(key)
 
     # opening the encrypted file
-    with open('nba.csv', 'rb') as enc_file:
+    with open(filename, 'rb') as enc_file:
         encrypted = enc_file.read()
 
     # decrypting the file
@@ -59,12 +62,17 @@ def decryptf(key: str):
 
     # opening the file in write mode and
     # writing the decrypted data
-    with open('nba.csv', 'wb') as dec_file:
+    with open(filename, 'wb') as dec_file:
         dec_file.write(decrypted)
 
 
 if __name__ == "__main__":
-    encryptf(True)
-    input("Copy key. Press Enter")
-    key = pyperclip.paste()
-    decryptf(key)
+    option = input("Enter e  to encrypt or d to decrypt: ")
+    if option == "e":
+        filename = input("Enter file inc. path: ")
+        encryptf(filename, True)
+    elif option == "d":
+        filename = input("Enter filename with path to decrypt: ")
+        input("Copy key. Press Enter: ")
+        key = pyperclip.paste()
+        decryptf(filename, key)

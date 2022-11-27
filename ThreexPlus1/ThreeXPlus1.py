@@ -11,7 +11,9 @@ def write_output(output):
         for line in output:
             logging.debug("line value is: ")
             logging.debug(line)
+            ''' Write every item in the list out delimited by , '''
             file.write(','.join(str(item) for item in line))
+            file.write("\n")
             
 def bounce_it(n):
     bounce = True

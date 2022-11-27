@@ -44,7 +44,7 @@ def bounce_it(n):
 if __name__ == '__main__':
     output = []
     #print(sys.argv)
-    n = int(input("Enter staring number: "))
+    n = int(input("Enter starting number: "))
     if sys.argv[2] == 'all':
         while n:
             output.append(bounce_it(n))

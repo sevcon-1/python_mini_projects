@@ -11,6 +11,8 @@ switch_you_lose = 0
 switch_you_win = 0
 stick_you_lose = 0
 
+#TODO: Add timeit to see what happens moving the dict out.
+
 for i in range(rounds):
     guess = door()
     car = door()
@@ -20,8 +22,8 @@ for i in range(rounds):
         stick_you_win += 1
         switch_you_lose += 1
     else:
-        switch_you_win += 1
         stick_you_lose += 1
+        switch_you_win += 1
 
     outcomes = {
         'stick_you_win': stick_you_win, 

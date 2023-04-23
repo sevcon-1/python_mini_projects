@@ -73,6 +73,6 @@ if __name__ == "__main__":
         encryptf(filename, True)
     elif option == "d":
         filename = input("Enter filename with path to decrypt: ")
-        input("Copy key. Press Enter: ")
+        input("Copy key to buffer and press Enter: ")
         key = pyperclip.paste()
         decryptf(filename, key)

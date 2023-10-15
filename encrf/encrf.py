@@ -3,7 +3,7 @@ from cryptography.fernet import Fernet
 import pyperclip
 from time import strftime, gmtime
 
-tstamp = strftime("%Y-%m-%d_%H-%M-%s", gmtime())
+tstamp = strftime("%Y-%m-%d-%H-%M-%s", gmtime())
 
 
 def generate_key():

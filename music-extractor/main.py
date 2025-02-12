@@ -1,3 +1,8 @@
+'''
+    Simple script to download YT audio from a provided url
+    Usage: main.py <YT url> <Target file prefix>
+'''
+
 import sys
 import yt_dlp
 

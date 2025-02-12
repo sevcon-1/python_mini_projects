@@ -25,6 +25,9 @@ for i in range(rounds):
         stick_you_lose += 1
         switch_you_win += 1
 
+    stick_win_pct = stick_you_win/rounds*100
+    switch_win_pct = switch_you_win/rounds*100
+
     outcomes = {
         'stick_you_win': stick_you_win, 
         "stick_you_lose": stick_you_lose,
@@ -32,5 +35,9 @@ for i in range(rounds):
         "switch_you_win": switch_you_win
     }
 
+print(f"Stick you win {stick_win_pct}% of the time\n")
+print(f"Switch you win {switch_win_pct}% of the time\n")
+
 for k,v in outcomes.items():
     print(k,v)
+

@@ -1,1 +1,2 @@
-pytube==15.0.0
+pip-autoremove==0.10.0
+yt-dlp==2025.1.26

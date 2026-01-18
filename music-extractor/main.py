@@ -10,6 +10,8 @@ import yt_dlp
 url = sys.argv[1]
 outfname = sys.argv[2]
 
+browser = 'firefox'
+
 ydl_opts = {
     'format': 'bestaudio/best',
     'outtmpl': f'./out/{outfname}.%(ext)s',
@@ -18,6 +20,7 @@ ydl_opts = {
         "preferredcodec": "mp3",
         "preferredquality": "192",
     }],
+    'cookiesfrombrowser': (browser,),  # Use cookies from the specified browser
 }
 
 
